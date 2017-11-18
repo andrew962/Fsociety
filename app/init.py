@@ -1,5 +1,4 @@
 from random import randint
-
 from flask import Flask,render_template,redirect,request,session,url_for
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,7 +9,7 @@ db = SQLAlchemy(app)
 """En esta base de dato se van a ir guardando los codigos generados para despues ser validados"""
 class Codigo(db.Model):
     id = db.Column('ID', db.Integer, primary_key=True)
-    codigo = db.Column(db.String(5), unique = True)
+    codigo = db.Column(db.String(5))
     def __init__(self,codigo):
         self.codigo = codigo
 
@@ -36,29 +35,26 @@ class Profesor(db.Model):
     id = db.Column('ID', db.Integer, primary_key = True)
     profesor = db.Column(db.String(100), unique = True)
     cedulap = db.Column(db.String(10),unique = True)
-    passwdp = db.Column(db.String(20), unique = True)
+    passwdp = db.Column(db.String(20))
 
-    def __init__(self, profesor, passwdp, cedulap):
+    def __init__(self, profesor, cedulap, passwdp):
         self.profesor = profesor
         self.passwdp = passwdp
         self.cedulap = cedulap
 
-nombreE = input('nombre: ')
-cedulap = input('cedula: ')
-passwd = input('pass: ')
+# nombreE = input('nombre: ')
+# cedulap = input('cedula: ')
+# passwd = input('pass: ')
+#
+# id_docente = (str(randint(1000, 3000)))
+# nuevo_codigo = Codigo(id_docente)
+# nuevo_estudiante= Estudiante(nombreE,cedulap,passwd)
+# #nuevo_profesor = Profesor(nombreE, cedulap, passwd)
+# db.session.add(nuevo_codigo)
+# #db.session.add(nuevo_profesor)
+# db.session.add(nuevo_estudiante)
+# db.session.commit()
 
-try:
-    # id_docente = (str(randint(1000, 3000)))
-    # nuevo_codigo = Codigo(id_docente)
-
-    nuevo_estudiante= Estudiante(nombreE,cedulap,passwd)
-    #nuevo_profesor = Profesor(nombreE, cedulap, passwd)
-    #db.session.add(nuevo_codigo)
-    #db.session.add(nuevo_profesor)
-    db.session.add(nuevo_estudiante)
-    db.session.commit()
-except Exception as e:
-    print(e)
 
 @app.route('/',methods = ['GET','POST'])
 def init():
@@ -161,8 +157,5 @@ def logout():
     return redirect(url_for('init'))
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True,port=3000)
-    try:
-        db.create_all()
-    except Exception as e:
-        print(e)
