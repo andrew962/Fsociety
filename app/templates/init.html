@@ -26,6 +26,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+.content {
+    max-width: 500px;
+    margin: auto;
+}
+</style>
 <style>
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
@@ -35,7 +46,7 @@ div.tab {
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 10%;
+    width: 30%;
     height: 630px;
 }
 
@@ -69,31 +80,66 @@ div.tab button.active {
     float: left;
     padding: 0px 12px;
     border: 1px solid #ccc;
-    width: 90%;
+    width: 70%;
     border-left: none;
     height: 630px;
 }
+
 </style>
 </head>
-<body>
+<body  background="../static/fondouip.jpeg" style=" background-size:100%; background-repeat: no-repeat; background-attachment;">
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Profesores</button>
   <button class="tablinks" onclick="openCity(event, 'Paris')">Estudiante</button>
 </div>
 
 <div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
+  <div class="content"  background="../static/fondouip.jpeg" style=" background-size:100%; background-repeat; no-repeat background-attachment;">
+  <h3>Registro de Asistencia de Docentes</h3>
+    <form class="form-horizontal" action="/login/profesor" method="POST">
+    <div class="form-group">
+      <label class="control-label col-sm-2">Cedula:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Cedula" name="cedula">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Contraseña:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" placeholder="Contraseña" name="pwd">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </div>
+    </div>
+  </form>
 </div>
-
+</div>
 <div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p>
+  <div class="content">
+  <h3>Registro de Asistencia de Estudiantes</h3>
+    <form class="form-horizontal" action="/login/estudiante" method="POST">
+    <div class="form-group">
+      <label class="control-label col-sm-2">Cedula:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Cedula" name="cedula">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2">Contraseña:</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" placeholder="Contraseña" name="pwd">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Enviar</button>
+      </div>
+    </div>
+  </form>
 </div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
 </div>
 
 <script>
@@ -114,6 +160,5 @@ function openCity(evt, cityName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-
 </body>
 </html>
