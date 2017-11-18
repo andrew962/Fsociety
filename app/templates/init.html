@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+        {% if session['logged_in'] %}
+            <a href="/logout">Salir</a>
+        {% else %}
+            <div>
+                <a href="/login/estudiante">Login Estudiante</a>
+                <a href="/login/profesor">Login Profesor</a>
+            </div>
+        {% endif %}
 </body>
 </html>

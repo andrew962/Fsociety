@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+        {% if session['logged_in'] %}
+            <h1>Hola {{ nombre }}</h1>
+            <a href="/logout">Salir</a>
+        {% for estudiantes in estudiante %}
+            <tr>
+                <td>{{ estudiantes.asistencia }}</td>
+                <td>{{ estudiantes.nom_estudiante }}</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+</body>
+</html>

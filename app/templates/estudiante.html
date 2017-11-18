@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+        {% if session['logged_in'] %}
+            <h1>Hola {{ nombre }}</h1>
+
+        <form action="/ruta" method="POST">
+            <input type="text" name="codigo">
+        </form>
+        <p>{{ mensaje }}</p>
+            <a href="/logout">Salir</a>
+        {% endif %}
+</body>
+</html>
